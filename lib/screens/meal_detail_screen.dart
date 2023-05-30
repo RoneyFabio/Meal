@@ -4,6 +4,8 @@ import '../models/meal.dart';
 class MealDetailScreen extends StatelessWidget {
   const MealDetailScreen({Key? key}) : super(key: key);
 
+//---------------------------------------------------------------
+
   _createSectonTitle(BuildContext context, String title) {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 10),
@@ -13,6 +15,8 @@ class MealDetailScreen extends StatelessWidget {
       ),
     );
   }
+
+//---------------------------------------------------------------
 
   _createSectioncontainer(child) {
     return Container(
@@ -28,6 +32,8 @@ class MealDetailScreen extends StatelessWidget {
       child: child,
     );
   }
+
+//---------------------------------------------------------------
 
   @override
   Widget build(BuildContext context) {
@@ -48,9 +54,9 @@ class MealDetailScreen extends StatelessWidget {
                 fit: BoxFit.cover,
               ),
             ),
-            //-------------------------------------------------------------
+//-------------------------------------------------------------
             _createSectonTitle(context, 'Ingredientes'),
-            //-------------------------------------------------------------
+//-------------------------------------------------------------
             _createSectioncontainer(
               ListView.builder(
                 itemCount: meal.ingredients.length,
@@ -68,18 +74,23 @@ class MealDetailScreen extends StatelessWidget {
                 },
               ),
             ),
-            //-------------------------------------------------------------
+//-------------------------------------------------------------
             _createSectonTitle(context, 'Passos'),
-            //-------------------------------------------------------------
+//-------------------------------------------------------------
             _createSectioncontainer(
               ListView.builder(
                 itemCount: meal.steps.length,
                 itemBuilder: (ctx, index) {
-                  return ListTile(
-                    leading: CircleAvatar(
-                      child: Text('${index + 1}'),
-                    ),
-                    title: Text(meal.steps[index]),
+                  return Column(
+                    children: [
+                      ListTile(
+                        leading: CircleAvatar(
+                          child: Text('${index + 1}'),
+                        ),
+                        title: Text(meal.steps[index]),
+                      ),
+                      Divider(),
+                    ],
                   );
                 },
               ),
